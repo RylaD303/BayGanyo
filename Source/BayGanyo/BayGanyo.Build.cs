@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class Bay_Ganyo : ModuleRules
+public class BayGanyo : ModuleRules
 {
-	public Bay_Ganyo(ReadOnlyTargetRules Target) : base(Target)
+	public BayGanyo(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	

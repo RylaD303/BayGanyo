@@ -5,7 +5,7 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "Bay_Ganyo",
+			"Name": "BayGanyo",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}

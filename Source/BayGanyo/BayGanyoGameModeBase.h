@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "Bay_GanyoGameModeBase.generated.h"
+#include "BayGanyoGameModeBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class BAY_GANYO_API ABay_GanyoGameModeBase : public AGameModeBase
+class BAYGANYO_API ABayGanyoGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	

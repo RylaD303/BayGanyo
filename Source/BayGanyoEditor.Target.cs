@@ -3,13 +3,13 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class Bay_GanyoTarget : TargetRules
+public class BayGanyoEditorTarget : TargetRules
 {
-	public Bay_GanyoTarget( TargetInfo Target) : base(Target)
+	public BayGanyoEditorTarget( TargetInfo Target) : base(Target)
 	{
-		Type = TargetType.Game;
+		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_1;
-		ExtraModuleNames.Add("Bay_Ganyo");
+		ExtraModuleNames.Add("BayGanyo");
 	}
 }
