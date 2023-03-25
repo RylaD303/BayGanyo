@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://meint23csvds"
-path="res://.godot/imported/Woodcutter_idle.png-95f3797c4fd59df364b4cafa12861898.ctex"
+uid="uid://dragn5v7k6bsu"
+path="res://.godot/imported/Woodcutter_idle.png-cb6375e0aceb0a6ff2859c8c34d19500.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player_test/Woodcutter_idle.png"
-dest_files=["res://.godot/imported/Woodcutter_idle.png-95f3797c4fd59df364b4cafa12861898.ctex"]
+source_file="res://Woodcutter_idle.png"
+dest_files=["res://.godot/imported/Woodcutter_idle.png-cb6375e0aceb0a6ff2859c8c34d19500.ctex"]
 
 [params]
 
