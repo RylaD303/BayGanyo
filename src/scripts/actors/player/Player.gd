@@ -2,6 +2,7 @@ extends Actor
 
 
 class_name Player
+
 var speed: float = 1000
 var direction: Vector2 = Vector2(0,0)
 
