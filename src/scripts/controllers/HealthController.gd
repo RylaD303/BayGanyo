@@ -14,3 +14,11 @@ func take_damage(amount: int) -> void:
 	self.current_health -= amount
 	if self.current_health<0:
 		self.current_health=0
+
+
+func heal(amount: int) -> void:
+	if amount<0:
+		pass
+	self.current_health += amount
+	if self.current_health>self.max_health:
+		self.current_health = self.max_health
