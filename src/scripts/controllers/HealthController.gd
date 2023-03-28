@@ -1,9 +1,12 @@
-extends Actor
+extends Object
 
-class_name Player
+class_name HealthController
 
 @export var max_health: int = 100
 var current_health: int = self.max_health
+
+func _init():
+	pass
 
 func take_damage(amount: int) -> void:
 	if amount<0:
