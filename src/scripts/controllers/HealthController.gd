@@ -22,3 +22,6 @@ func heal(amount: int) -> void:
 	self.current_health += amount
 	if self.current_health>self.max_health:
 		self.current_health = self.max_health
+
+func is_dead() -> bool:
+	return self.current_health <= 0
