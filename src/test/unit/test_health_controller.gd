@@ -3,11 +3,6 @@ extends GutTest
 func after_all():
 	assert_no_new_orphans('There is some memory allocated still.')
 
-func test_memory_freeing():
-	var health_controller: HealthController = HealthController.new()
-	health_controller.free()
-	assert_no_new_orphans('There is some memory allocated still.')
-
 func test_health():
 	var health_controller: HealthController = autofree(HealthController.new())
 	assert_eq(health_controller.current_health, health_controller.max_health)
