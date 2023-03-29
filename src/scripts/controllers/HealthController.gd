@@ -27,5 +27,9 @@ func heal(amount: int) -> void:
 	if self.current_health > self.max_health:
 		self.current_health = self.max_health
 
+func set_max_health(amount: int):
+	self.max_health = amount
+	self.current_health = min(current_health, max_health)
+
 func is_health_depleted() -> bool:
 	return self.current_health <= 0

@@ -7,8 +7,7 @@ class_name HurtBox
 func _init() -> void:
 	self.collision_layer = 4 # Bit value of hurtboxes
 	self.collision_mask = 2 # Bit value of hitboxes
-
-func _ready() -> void:
+	
 	self.area_entered.connect(_on_area_entered)
 
 func _on_area_entered(hitbox: HitBox) -> void:

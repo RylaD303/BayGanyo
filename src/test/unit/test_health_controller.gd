@@ -37,6 +37,17 @@ func test_healing():
 	health_controller.heal(1)
 	assert_eq(health_controller.current_health, health_controller.max_health)
 
+func test_setting_max_health():
+	var health_controller: HealthController = autofree(HealthController.new())
+	health_controller.set_max_health(100)
+	assert_true(health_controller.current_health <= health_controller.max_health)
+	health_controller.set_max_health(10)
+	assert_true(health_controller.current_health <= health_controller.max_health)
+	health_controller.set_max_health(1)
+	assert_true(health_controller.current_health <= health_controller.max_health)
+	health_controller.set_max_health(0)
+	assert_true(health_controller.current_health <= health_controller.max_health)
+
 func test_is_health_depleted():
 	var health_controller: HealthController = autofree(HealthController.new())
 	assert_false(health_controller.is_health_depleted())
