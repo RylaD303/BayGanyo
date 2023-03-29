@@ -26,4 +26,4 @@ func test_taking_damage_when_hurtbox_gets_hit():
 	hurtbox.health_controller = health_controller
 	hitbox.set_damage(5) 
 	hurtbox.emit_signal("area_entered", hitbox)
-	assert_eq(hurtbox.health_controller.current_health, 5)
+	assert_eq(hurtbox.health_controller.current_health, 5) 
