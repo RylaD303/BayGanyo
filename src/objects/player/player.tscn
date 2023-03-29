@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2mllliw8a2io"]
+[gd_scene load_steps=4 format=3 uid="uid://d2mllliw8a2io"]
 
 [ext_resource type="Script" path="res://src/scripts/actors/player/Player.gd" id="1_cght1"]
 [ext_resource type="Script" path="res://src/scripts/controllers/HealthController.gd" id="2_jfovt"]
+[ext_resource type="Script" path="res://src/scripts/controllers/HurtBox.gd" id="3_q5pq8"]
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_cght1")
 
 [node name="HealthController" type="Node" parent="."]
 script = ExtResource("2_jfovt")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_controller")]
+script = ExtResource("3_q5pq8")
+health_controller = NodePath("../HealthController")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
