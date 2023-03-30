@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var speed: float = 1000
+@export var speed: float = 100
 var movement: Vector2 = Vector2(0,0)
 
 func _evaluate_keys_pressed() -> void:
@@ -12,6 +12,5 @@ func _evaluate_keys_pressed() -> void:
 
 func _physics_process(delta: float) -> void:
 	_evaluate_keys_pressed()
-	velocity = self.movement.normalized()
-	velocity *= self.speed*delta
+	velocity = self.movement.normalized()* self.speed
 	move_and_slide()
