@@ -7,7 +7,6 @@ var movement_vector := Vector2(1, 0)
 @export var delete_bullet_on_exit : bool = true
 
 
-	# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	global_position += movement_vector.rotated(rotation) * speed * delta
 
