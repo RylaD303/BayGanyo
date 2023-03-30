@@ -16,6 +16,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	if delete_bullet_on_exit:
 		queue_free()
 	
+	
 func setup(global_position, transform_rotation):
 	self.global_position = global_position
 	self.look_at(transform_rotation)
