@@ -10,6 +10,13 @@ func test_player_not_moving():
 	simulate(player, 1, 1)
 	assert_eq(player.velocity, Vector2(0, 0))
 
+func test_player_input():
+	var player: Player = autofree(Player.new())
+	player.speed = 1
+	Input.action_press("UI_right")
+	simulate(player, 1, 1)
+	assert_eq(player.get_input_direction(), Vector2(1, 0))
+
 func test_player_moving():
 	var player: Player = autofree(Player.new())
 	player.speed = 1
@@ -29,10 +36,10 @@ func test_player_double_button_press():
 	assert_eq(player.velocity, Vector2(0, 0))
 	Input.action_release("UI_right")
 	simulate(player, 1, 1)
-	assert_eq(player.movement, Vector2(-1, 0))
+	assert_eq(player.velocity, Vector2(-1, 0))
 	Input.action_release("UI_left")
 	simulate(player, 1, 1)
-	assert_eq(player.movement, Vector2(0, 0))
+	assert_eq(player.velocity, Vector2(0, 0))
 	
 
 func test_player_button_held():
@@ -42,7 +49,7 @@ func test_player_button_held():
 	simulate(player, 1, 1)
 	assert_eq(player.velocity, Vector2(1, 0))
 	simulate(player, 2, 1)
-	assert_eq(player.movement, Vector2(1, 0))
+	assert_eq(player.velocity, Vector2(1, 0))
 	Input.action_release("UI_right")
 	simulate(player, 1, 1)
-	assert_eq(player.movement, Vector2(0, 0))
+	assert_eq(player.velocity, Vector2(0, 0))
