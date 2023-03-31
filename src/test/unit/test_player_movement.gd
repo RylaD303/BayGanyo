@@ -14,7 +14,6 @@ func test_player_input():
 	var player: Player = autofree(Player.new())
 	player.speed = 1
 	Input.action_press("UI_right")
-	simulate(player, 1, 1)
 	assert_eq(player.get_input_direction(), Vector2(1, 0))
 
 func test_player_moving():
