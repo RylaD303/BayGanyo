@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/scripts/controllers/HealthController.gd" id="2_jfovt"]
 [ext_resource type="Script" path="res://src/scripts/controllers/HurtBox.gd" id="3_q5pq8"]
 
-[node name="player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cght1")
 
 [node name="HealthController" type="Node" parent="."]
