@@ -1,3 +1,3 @@
-extends Actor
+extends CharacterBody2D
 
 class_name Player
