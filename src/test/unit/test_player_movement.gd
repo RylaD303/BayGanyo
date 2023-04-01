@@ -62,3 +62,24 @@ func test_player_button_held():
 	Input.action_release("UI_right")
 	player.calculate_velocity()
 	assert_eq(player.velocity, Vector2(0, 0))
+
+func test_player_acceleration():
+	var player: Player = autofree(Player.new())
+	player.speed = 10
+	player.acceleration = 5
+	Input.action_press("UI_right")
+	player.calculate_velocity()
+	assert_true(player.velocity.x > 0 && player.velocity.x < 10)
+	player.calculate_velocity()
+	assert_true(player.velocity.x == 10)
+	
+	
+
+func test_player_friction():
+	var player: Player = autofree(Player.new())
+	player.friction = 5
+	player.velocity = Vector2(10, 0)
+	player.calculate_velocity()
+	assert_true(player.velocity.x > 0 && player.velocity.x < 10)
+	player.calculate_velocity()
+	assert_true(player.velocity.x == 0)
