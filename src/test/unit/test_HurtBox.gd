@@ -7,7 +7,7 @@ func after_all():
 func test_signal_connection():
 	var hurtbox: HurtBox = autofree(HurtBox.new())
 	watch_signals(hurtbox)
-	hurtbox.emit_signal("area_entered")
+	hurtbox.emit_signal("area_entered", null)
 	assert_signal_emitted(hurtbox, "area_entered")
 
 func test_entering_hurtbox_with_hitbox():
