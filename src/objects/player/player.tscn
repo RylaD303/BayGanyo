@@ -10,8 +10,7 @@ script = ExtResource("1_cght1")
 [node name="HealthController" type="Node" parent="."]
 script = ExtResource("2_jfovt")
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_controller")]
+[node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("3_q5pq8")
-health_controller = NodePath("../HealthController")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
