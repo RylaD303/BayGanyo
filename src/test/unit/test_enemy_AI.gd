@@ -10,12 +10,20 @@ func test_memory_freeing():
 
 func test_initial_state():
 	var enemy_AI: EnemyAI = autofree(EnemyAI.new())
-	assert_eq(enemy_AI.current_state, EnemyAI.CALM, "When first created an enemy AI is in the calm state")
+	assert_eq(enemy_AI.primary_state, EnemyAI.CALM, "When first created an enemy AI is in the calm state")
+	assert_eq(enemy_AI.secondary_state, EnemyAI.WANDERING, "When first created an enemy AI is in the wandering state")
 	
 
 func test_changing_state():
 	var enemy_AI: EnemyAI = autofree(EnemyAI.new())
-	enemy_AI._change_state()
-	assert_eq(enemy_AI.current_state, EnemyAI.ATTACKING)
-	enemy_AI._change_state()
-	assert_eq(enemy_AI.current_state, EnemyAI.CALM)
+	enemy_AI.change_state()
+	assert_eq(enemy_AI.primary_state, EnemyAI.CALM)
+	assert_eq(enemy_AI.secondary_state, EnemyAI.IDLE)
+	enemy_AI.change_state()
+	assert_eq(enemy_AI.primary_state, EnemyAI.ATTACKING)
+	assert_eq(enemy_AI.secondary_state, EnemyAI.IDLE)
+	enemy_AI.change_state()
+	assert_eq(enemy_AI.primary_state, EnemyAI.CALM)
+	assert_eq(enemy_AI.secondary_state, EnemyAI.WANDERING)
+
+
