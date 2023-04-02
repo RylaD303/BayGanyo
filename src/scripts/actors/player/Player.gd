@@ -6,6 +6,9 @@ class_name Player
 @export var acceleration: int = 10
 @export var friction: int = 15 # how fast the player stops moving
 
+@export var health_controller : HealthController
+@export var hurtbox : HurtBox	
+
 var movement: Vector2 = Vector2(0,0)
 
 func get_input_direction() -> Vector2:
