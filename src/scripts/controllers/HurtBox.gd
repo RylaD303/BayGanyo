@@ -5,9 +5,6 @@ class_name HurtBox
 @export var health_controller: HealthController
 
 func _init() -> void:
-	self.collision_layer = 4 # Bit value of hurtboxes
-	self.collision_mask = 2 # Bit value of hitboxes
-	
 	self.area_entered.connect(_on_area_entered)
 
 func _on_area_entered(hitbox: HitBox) -> void:
