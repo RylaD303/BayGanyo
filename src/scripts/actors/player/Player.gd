@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	self.calculate_velocity()
 	self.move()
 
-func _on_hitbox_entered(hitbox: HitBox):
+func _on_hitbox_entered(hitbox: Hitbox):
 	if self.invincible:
 		return
 	self.health_controller.take_damage(hitbox.get_damage())
