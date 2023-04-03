@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2mllliw8a2io"]
+[gd_scene load_steps=5 format=3 uid="uid://cjlwbkxbgfr1w"]
 
 [ext_resource type="Script" path="res://src/scripts/actors/player/Player.gd" id="1_cght1"]
 [ext_resource type="Script" path="res://src/scripts/controllers/HealthController.gd" id="2_jfovt"]
-[ext_resource type="Script" path="res://src/scripts/controllers/HurtBox.gd" id="3_q5pq8"]
+[ext_resource type="Script" path="res://src/scripts/controllers/Hurtbox.gd" id="3_3uux7"]
 [ext_resource type="Texture2D" uid="uid://bg7r0fr8v6s5x" path="res://assets/sprites/player_test/Woodcutter.png" id="4_dibo3"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_controller", "hurtbox")]
 script = ExtResource("1_cght1")
 acceleration = 5
 friction = 5
+health_controller = NodePath("HealthController")
+hurtbox = NodePath("HurtBox")
 
 [node name="HealthController" type="Node" parent="."]
 script = ExtResource("2_jfovt")
 
 [node name="HurtBox" type="Area2D" parent="."]
-script = ExtResource("3_q5pq8")
+script = ExtResource("3_3uux7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 

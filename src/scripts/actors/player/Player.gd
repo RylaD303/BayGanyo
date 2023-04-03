@@ -7,9 +7,7 @@ class_name Player
 @export var friction: int = 15 # how fast the player stops moving
 
 @export var health_controller : HealthController
-@export var hurtbox : HurtBox	
-
-var movement: Vector2 = Vector2(0,0)
+@export var hurtbox : HurtBox
 
 func get_input_direction() -> Vector2:
 	var x_axis: = Input.get_action_strength("UI_right") - Input.get_action_strength("UI_left")
