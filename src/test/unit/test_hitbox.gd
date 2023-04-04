@@ -11,5 +11,5 @@ func test_lone_hitbox_damage():
 
 func test_hitbox_set_damage():
 	var hitbox: Hitbox = autofree(Hitbox.new())
-	hitbox.set_damage(5)\
+	hitbox.set_damage(5)
 	assert_eq(hitbox.get_damage(), 5)
