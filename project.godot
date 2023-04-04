@@ -51,6 +51,6 @@ UI_down={
 
 [layer_names]
 
-2d_render/layer_1="game world"
-2d_render/layer_2="hitboxes"
-2d_render/layer_3="hurtboxes"
+2d_render/layer_1="Game world"
+2d_render/layer_2="Player boxes"
+2d_render/layer_3="Enemy boxes"

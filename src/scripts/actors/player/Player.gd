@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
 class_name Player
+@export var health_controller : HealthController
+@export var hurtbox : Hurtbox
+
 @export var speed: int = 100
 @export var acceleration: int = 10
 @export var friction: int = 15 # how fast the player stops moving
 
-var movement: Vector2 = Vector2(0,0)
 var invincible = false
 
 func _init():
