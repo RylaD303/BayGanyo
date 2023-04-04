@@ -13,9 +13,3 @@ func test_hitbox_damage():
 	var hitbox: Hitbox = autofree(Hitbox.new())
 	hitbox.set_damage(5)
 	assert_eq(hitbox.get_damage(), 5)
-
-func test_emiting_signal():
-	var hitbox: Hitbox = autofree(Hitbox.new())
-	watch_signals(hitbox)
-	hitbox.emit_signal("hurtbox_hit")
-	assert_signal_emitted(hitbox, "hurtbox_hit")

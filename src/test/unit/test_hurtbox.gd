@@ -12,7 +12,7 @@ func test_signal_connection():
 
 func test_entering_hurtbox_with_hitbox():
 	var hurtbox: Hurtbox = autofree(Hurtbox.new())
-	var hitbox: Hurtbox = autofree(Hurtbox.new())
+	var hitbox: Hitbox = autofree(Hitbox.new())
 	watch_signals(hurtbox)
 	hurtbox.emit_signal("area_entered", hitbox)
 	assert_signal_emitted(hurtbox, "hitbox_entered", [hitbox])
