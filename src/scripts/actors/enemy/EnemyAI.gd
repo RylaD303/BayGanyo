@@ -12,13 +12,13 @@ enum State{
 @export var higher_bound_for_idle: int = 4
 @export var lower_bound_for_wandering: int = 2
 @export var higher_bound_for_wandering: int = 4
-@export var attack_time: int = 1
+@export var time_in_attack_state: int = 1
 
 var gen: RandomNumberGenerator
 var state: State
 var time_in_idle_state: float 
 var time_in_wandering_state: float
-var timer = Timer.new()
+var timer: Timer
 
 func _set_state_attacking() -> void:
 	self.state = State.ATTACKING
@@ -41,14 +41,21 @@ func _init():
 	self.state = State.IDLE
 	self.time_in_idle_state = gen.randf_range(lower_bound_for_idle, higher_bound_for_idle)
 	self.time_in_wandering_state = gen.randf_range(lower_bound_for_wandering, higher_bound_for_wandering)
+	self.timer = Timer.new()
+	add_child(self.timer)
+	self.timer.start(1)
+
 
 func on_timer_timeout():
 	if self.state == State.ATTACKING:
 		self._set_state_idle()
+		self.timer.start(self.time_in_idle_state)
 	elif self.state == State.IDLE:
 		self._set_state_wandering()
+		self.timer.start(self.time_in_wandering_state)
 	else:
 		self._set_state_attacking()
+		self.timer.start(self.time_in_attack_state)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
