@@ -17,5 +17,3 @@ func test_changing_state_wandering():
 	enemy_AI._set_state_wandering()
 	assert_eq(enemy_AI.state, enemy_AI.State.WANDERING)
 	assert_ne(enemy_AI.velocity, Vector2(0,0))
-
-

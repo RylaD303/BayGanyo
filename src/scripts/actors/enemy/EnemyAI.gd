@@ -18,6 +18,7 @@ var gen: RandomNumberGenerator
 var state: State
 var time_in_idle_state: float 
 var time_in_wandering_state: float
+var timer = Timer.new()
 
 func _set_state_attacking() -> void:
 	self.state = State.ATTACKING
@@ -40,7 +41,15 @@ func _init():
 	self.state = State.IDLE
 	self.time_in_idle_state = gen.randf_range(lower_bound_for_idle, higher_bound_for_idle)
 	self.time_in_wandering_state = gen.randf_range(lower_bound_for_wandering, higher_bound_for_wandering)
-	
+
+func on_timer_timeout():
+	if self.state == State.ATTACKING:
+		self._set_state_idle()
+	elif self.state == State.IDLE:
+		self._set_state_wandering()
+	else:
+		self._set_state_attacking()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
