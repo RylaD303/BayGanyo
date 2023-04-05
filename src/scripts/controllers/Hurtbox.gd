@@ -10,4 +10,4 @@ func _init() -> void:
 func _on_area_entered(hitbox: Hitbox) -> void:
 	if hitbox == null :
 		return
-	self.hitbox_entered.emit()
+	self.hitbox_entered.emit(hitbox)
