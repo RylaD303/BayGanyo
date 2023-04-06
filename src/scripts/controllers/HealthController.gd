@@ -10,7 +10,7 @@ var current_health: int = self.max_health
 func is_health_depleted() -> bool:
 	return self.current_health <= 0
 
-func take_damage(amount: int) -> void:
+func apply_damage(amount: int) -> void:
 	amount = clamp(amount, 0, abs(amount))
 	self.current_health -= amount
 	if self.is_health_depleted():
