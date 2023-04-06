@@ -10,7 +10,7 @@ class_name Player
 
 var invincible = false
 
-func _init():
+func setup_hurtbox_connections():
 	self.hurtbox.hitbox_entered.connect(_on_hitbox_entered)
 
 func get_input_direction() -> Vector2:
