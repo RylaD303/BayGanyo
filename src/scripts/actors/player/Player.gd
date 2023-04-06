@@ -9,7 +9,8 @@ class_name Player
 @export var friction: int = 15 # how fast the player stops moving
 
 var invincible = false
-var can_dash = false
+var can_dash = true
+var dashing = false
 
 func setup_hurtbox_connections():
 	self.hurtbox.hitbox_entered.connect(_on_hitbox_entered)
@@ -18,6 +19,11 @@ func get_input_direction() -> Vector2:
 	var x_axis: = Input.get_action_strength("UI_right") - Input.get_action_strength("UI_left")
 	var y_axis: = Input.get_action_strength("UI_down") - Input.get_action_strength("UI_up")
 	return Vector2(x_axis, y_axis).normalized()
+
+func check_dash_input() -> void:
+	if Input.is_action_pressed("UI_dash") and can_dash:
+		can_dash = false
+		dashing = true
 
 func calculate_velocity() -> void:
 	var direction = self.get_input_direction()
