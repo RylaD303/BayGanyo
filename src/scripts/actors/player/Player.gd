@@ -9,7 +9,7 @@ class_name Player
 @export var friction: int = 15 # how fast the player stops moving
 
 var invincible = false
-var dashing = false
+var can_dash = false
 
 func setup_hurtbox_connections():
 	self.hurtbox.hitbox_entered.connect(_on_hitbox_entered)

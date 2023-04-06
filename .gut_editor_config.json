@@ -3,7 +3,6 @@
  "compact_mode": false,
  "config_file": "res://.gutconfig.json",
  "dirs": [
-  "res://src/test",
   "res://src/test/unit"
  ],
  "disable_colors": false,
@@ -14,7 +13,7 @@
  "gut_on_top": true,
  "hide_orphans": false,
  "ignore_pause": false,
- "include_subdirs": true,
+ "include_subdirs": false,
  "inner_class": null,
  "junit_xml_file": "",
  "junit_xml_timestamp": false,
@@ -32,7 +31,7 @@
  "post_run_script": "",
  "pre_run_script": "",
  "prefix": "test_",
- "selected": "test_hurtbox.gd",
+ "selected": null,
  "should_exit": false,
  "should_exit_on_success": false,
  "should_maximize": false,
