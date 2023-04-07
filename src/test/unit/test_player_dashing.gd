@@ -5,6 +5,7 @@ func after_all():
 
 func after_each():
 	Input.action_release("UI_dash")
+	Input.action_release("UI_left")
 
 func test_default_state_dashing():
 	var player: Player = autofree(Player.new())
@@ -33,4 +34,14 @@ func test_player_changes_speed_when_dashing():
 	player.velocity = Vector2(1, 0)
 	Input.action_press("UI_dash")
 	player.check_input_dash()
+	assert_eq(player.velocity, Vector2(player.dash_speed, 0))
+
+func test_player_cannot_change_direction_while_dashing():
+	var player: Player = autofree(Player.new())
+	player.velocity = Vector2(1, 0)
+	Input.action_press("UI_dash")
+	player.check_input_dash()
+	assert_eq(player.velocity, Vector2(player.dash_speed, 0))
+	Input.action_press("UI_left")
+	player.change_velocity()
 	assert_eq(player.velocity, Vector2(player.dash_speed, 0))

@@ -33,6 +33,10 @@ func calculate_velocity() -> void:
 	else:
 		self.accelerate(direction)
 
+func change_velocity() -> void:
+	if !self.is_dashing:
+		self.calculate_velocity()
+
 func accelerate(direction: Vector2) -> void:
 	self.velocity = self.velocity.move_toward(self.speed*direction, self.acceleration)
 
@@ -43,7 +47,8 @@ func move() -> void:
 	self.move_and_slide()
 
 func _physics_process(_delta: float) -> void:
-	self.calculate_velocity()
+	self.change_velocity()
+	self.check_input_dash()
 	self.move()
 
 func _on_hitbox_entered(hitbox: Hitbox):
