@@ -30,8 +30,8 @@ func test_start_moving_changes_animation():
 	animation_controller.player = player
 	animation_controller.sprite = sprites
 	animation_controller.sprite.play(&"idle_right")
-	assert_eq(animation_controller.sprite.animation,&"idle_right")
 	player.velocity= Vector2(1,0)
+	animation_controller.update_direction()
 	animation_controller.update_sprites()
 	assert_eq(animation_controller.sprite.animation,&"walk_right")
 	
@@ -40,9 +40,24 @@ func test_stop_moving_changes_animation():
 	var animation_controller: PlayerAnimationController = autofree(PlayerAnimationController.new())
 	animation_controller.player = player
 	animation_controller.sprite = sprites
-	animation_controller.sprite.play(&"walk_right")
+	player.velocity= Vector2(1,0)
+	animation_controller.update_direction()
+	animation_controller.update_sprites()
 	assert_eq(animation_controller.sprite.animation,&"walk_right")
 	player.velocity= Vector2(0,0)
+	animation_controller.update_direction()
 	animation_controller.update_sprites()
 	assert_eq(animation_controller.sprite.animation,&"idle_right")
+	
+func test_change_sprite_direction(): 
+	var player: Player = autofree(Player.new())
+	var animation_controller: PlayerAnimationController = autofree(PlayerAnimationController.new())
+	animation_controller.player = player
+	animation_controller.sprite = sprites
+	animation_controller.sprite.play(&"idle_left")
+	player.velocity= Vector2(1,0)
+	animation_controller.update_direction()
+	animation_controller.update_sprites()
+	assert_eq(animation_controller.sprite.animation,&"walk_right")
+	
 	
