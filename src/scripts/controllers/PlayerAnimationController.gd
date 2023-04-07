@@ -10,8 +10,10 @@ var _character_direction = directions.RIGHT
 
 func get_character_direction()-> directions:
 	return _character_direction	
+	
 func _player_is_moving()-> bool:
 	return self.player.velocity.x != 0 || self.player.velocity.y != 0
+
 func update_direction()-> void:
 	if(self.player.velocity.x < 0):
 		_character_direction = directions.LEFT
