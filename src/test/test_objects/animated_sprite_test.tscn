@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmja53h7mkk46"]
+
+[ext_resource type="Texture2D" uid="uid://bg7r0fr8v6s5x" path="res://assets/sprites/player_test/Woodcutter.png" id="1_b7egh"]
+[ext_resource type="Texture2D" uid="uid://cbkybdtcjexg8" path="res://assets/sprites/player_test/Woodcutter_hurt.png" id="2_0vmbh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du6ng"]
+atlas = ExtResource("1_b7egh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxb4p"]
+atlas = ExtResource("1_b7egh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8o0v"]
+atlas = ExtResource("2_0vmbh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gen5d"]
+atlas = ExtResource("2_0vmbh")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mem1i"]
+atlas = ExtResource("2_0vmbh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmpq3"]
+atlas = ExtResource("2_0vmbh")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ssts"]
+atlas = ExtResource("2_0vmbh")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pchm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du6ng")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxb4p")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8o0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gen5d")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mem1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmpq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ssts")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3pchm")
+animation = &"walk_left"

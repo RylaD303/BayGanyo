@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 class_name Player
+
 @export var health_controller : HealthController
 @export var hurtbox : Hurtbox
 
