@@ -40,6 +40,8 @@ func dash():
 	if can_dash and velocity != Vector2.ZERO:
 		can_dash = false
 		is_dashing = true
+		self.dash_length_timer.start(dash_length_time)
+		self.dash_cooldown_timer.start(dash_cooldown)
 		velocity = velocity.normalized()*dash_speed
 
 func check_input_dash() -> void:

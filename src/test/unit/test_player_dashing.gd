@@ -45,6 +45,10 @@ func test_player_cannot_change_direction_while_dashing():
 
 func test_player_dashability_changes_on_timer_timeout():
 	var player: Player = autofree(Player.new())
+	add_child(player) 
+	# connecting player to the tree, so the player's
+	# timers are connected to the tree and start
+	# counting down.
 	player.velocity = Vector2(1, 0)
 	player.dash()
 	assert_true(player.is_dashing)
@@ -58,6 +62,7 @@ func test_player_dashability_changes_on_timer_timeout():
 
 func test_player_can_dash_again():
 	var player: Player = autofree(Player.new())
+	add_child(player) 
 	player.velocity = Vector2(1, 0)
 	player.dash()
 	await player.dash_length_timer.timeout
