@@ -25,8 +25,8 @@ func setup_timers():
 	self.add_child(self.dash_length_timer)
 	self.dash_cooldown_timer = Timer.new()
 	self.add_child(self.dash_cooldown_timer)
-	self.dash_length_timer.timeout.connect("stop_dash")
-	self.dash_cooldown_timer.timeout.connect("refresh_ability_to_dash")
+	self.dash_length_timer.timeout.connect(stop_dash)
+	self.dash_cooldown_timer.timeout.connect(refresh_ability_to_dash)
 
 func setup_hurtbox_connections():
 	self.hurtbox.hitbox_entered.connect(_on_hitbox_entered)
