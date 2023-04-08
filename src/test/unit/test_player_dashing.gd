@@ -42,7 +42,7 @@ func test_player_cannot_change_direction_while_dashing():
 	Input.action_press("UI_left")
 	player.change_velocity()
 	assert_eq(player.velocity, Vector2(player.dash_speed, 0))
-	
+
 func test_player_dashability_changes_on_timer_timeout():
 	var player: Player = autofree(Player.new())
 	player.velocity = Vector2(1, 0)
@@ -55,4 +55,16 @@ func test_player_dashability_changes_on_timer_timeout():
 	await player.dash_cooldown_timer.timeout
 	assert_false(player.is_dashing)
 	assert_true(player.can_dash)
-	
+
+func test_player_can_dash_again():
+	var player: Player = autofree(Player.new())
+	player.velocity = Vector2(1, 0)
+	player.dash()
+	await player.dash_length_timer.timeout
+	await player.dash_cooldown_timer.timeout
+	assert_false(player.is_dashing)
+	assert_true(player.can_dash)
+	player.velocity = Vector2(1, 0)
+	player.dash()
+	assert_true(player.is_dashing)
+	assert_false(player.can_dash)
