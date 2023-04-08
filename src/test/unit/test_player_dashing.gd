@@ -45,3 +45,5 @@ func test_player_cannot_change_direction_while_dashing():
 	Input.action_press("UI_left")
 	player.change_velocity()
 	assert_eq(player.velocity, Vector2(player.dash_speed, 0))
+
+
