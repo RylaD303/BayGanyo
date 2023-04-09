@@ -8,6 +8,10 @@ func after_each():
 	Input.action_release("UI_right")
 	Input.action_release("UI_left")
 
+func setup_player_dash_time(player: Player):
+	player.dash_cooldown = 0.02
+	player.dash_length_time = 0.01
+
 func test_default_state_dashing():
 	var player: Player = autoqfree(Player.new())
 	assert_false(player.is_dashing)
@@ -49,6 +53,7 @@ func test_player_dashability_changes_on_timer_timeout():
 	# connecting player to the tree, so the player's
 	# timers are connected to the tree and start
 	# counting down.
+	setup_player_dash_time(player)
 	Input.action_press("UI_right")
 	player.dash()
 	assert_true(player.is_dashing)
@@ -62,7 +67,8 @@ func test_player_dashability_changes_on_timer_timeout():
 
 func test_player_can_dash_again():
 	var player: Player = autoqfree(Player.new())
-	add_child(player) 
+	add_child(player)
+	setup_player_dash_time(player)
 	Input.action_press("UI_right")
 	player.dash()
 	await player.dash_length_timer.timeout
