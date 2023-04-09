@@ -5,7 +5,7 @@ func after_all():
 	assert_no_new_orphans('There is some memory allocated still.')
 
 func test_player_getting_damaged():
-	var player: Player = autofree(Player.new())
+	var player: Player = autoqfree(Player.new())
 	player.hurtbox =  autofree(Hurtbox.new())
 	player.health_controller = autofree(HealthController.new())
 

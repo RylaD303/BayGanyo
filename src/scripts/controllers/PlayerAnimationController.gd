@@ -14,7 +14,7 @@ func get_character_direction()-> directions:
 func _player_is_moving()-> bool:
 	return self.player.velocity.x != 0 || self.player.velocity.y != 0
 
-func _process(delta):
+func _process(_delta):
 	update_direction()
 	update_sprites()
 
@@ -29,11 +29,11 @@ func update_sprites()-> void:
 		if(_character_direction == directions.RIGHT):
 			self.sprite.play(&"walk_right")
 		else:
-			self.spite.play(&"walk_left")
+			self.sprite.play(&"walk_left")
 	else:
 		if(_character_direction == directions.RIGHT):
 			self.sprite.play(&"idle_right")
 		else:
-			self.spite.play(&"idle_left")
+			self.sprite.play(&"idle_left")
 
 

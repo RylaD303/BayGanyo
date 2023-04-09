@@ -10,7 +10,7 @@ class_name Player
 @export var friction: int = 15 #how fast the player stops moving
 @export var dash_speed: int = 200
 @export var dash_cooldown: int = 1
-@export var dash_length_time: int = 0.8
+@export var dash_length_time: float = 0.8
 
 var can_dash = true
 var is_dashing = false
@@ -37,12 +37,12 @@ func get_input_direction() -> Vector2:
 	return Vector2(x_axis, y_axis).normalized()
 
 func dash():
-	if can_dash and velocity != Vector2.ZERO:
+	if can_dash and get_input_direction() != Vector2.ZERO:
 		can_dash = false
 		is_dashing = true
 		self.dash_length_timer.start(dash_length_time)
 		self.dash_cooldown_timer.start(dash_cooldown)
-		velocity = velocity.normalized()*dash_speed
+		velocity = get_input_direction().normalized()*dash_speed
 
 func check_input_dash() -> void:
 	if Input.is_action_pressed("UI_dash"):

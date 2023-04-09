@@ -5,6 +5,7 @@ func after_all():
 
 func after_each():
 	Input.action_release("UI_dash")
+	Input.action_release("UI_right")
 	Input.action_release("UI_left")
 
 func test_default_state_dashing():
@@ -12,10 +13,15 @@ func test_default_state_dashing():
 	assert_false(player.is_dashing)
 	assert_true(player.can_dash)
 
+func test_player_changes_speed_when_dashing():
+	var player: Player = autoqfree(Player.new())
+	Input.action_press("UI_right")
+	player.dash()
+	assert_eq(player.velocity, Vector2(player.dash_speed, 0))
 
 func test_dash_user_input():
 	var player: Player = autoqfree(Player.new())
-	player.velocity = Vector2(1,0)
+	Input.action_press("UI_right")
 	Input.action_press("UI_dash")
 	player.check_input_dash()
 	assert_true(player.is_dashing)
@@ -28,15 +34,9 @@ func test_player_cannot_dash_with_no_velocity():
 	assert_false(player.is_dashing)
 	assert_true(player.can_dash)
 
-func test_player_changes_speed_when_dashing():
-	var player: Player = autoqfree(Player.new())
-	player.velocity = Vector2(1, 0)
-	player.dash()
-	assert_eq(player.velocity, Vector2(player.dash_speed, 0))
-
 func test_player_cannot_change_direction_while_dashing():
 	var player: Player = autoqfree(Player.new())
-	player.velocity = Vector2(1, 0)
+	Input.action_press("UI_right")
 	player.dash()
 	assert_eq(player.velocity, Vector2(player.dash_speed, 0))
 	Input.action_press("UI_left")
@@ -49,7 +49,7 @@ func test_player_dashability_changes_on_timer_timeout():
 	# connecting player to the tree, so the player's
 	# timers are connected to the tree and start
 	# counting down.
-	player.velocity = Vector2(1, 0)
+	Input.action_press("UI_right")
 	player.dash()
 	assert_true(player.is_dashing)
 	assert_false(player.can_dash)
@@ -63,13 +63,12 @@ func test_player_dashability_changes_on_timer_timeout():
 func test_player_can_dash_again():
 	var player: Player = autoqfree(Player.new())
 	add_child(player) 
-	player.velocity = Vector2(1, 0)
+	Input.action_press("UI_right")
 	player.dash()
 	await player.dash_length_timer.timeout
 	await player.dash_cooldown_timer.timeout
 	assert_false(player.is_dashing)
 	assert_true(player.can_dash)
-	player.velocity = Vector2(1, 0)
 	player.dash()
 	assert_true(player.is_dashing)
 	assert_false(player.can_dash)
