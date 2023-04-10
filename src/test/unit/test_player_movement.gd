@@ -17,8 +17,8 @@ func test_player_not_moving():
 	var player: Player = autofree(Player.new())
 	set_player_default(player)
 	player.calculate_velocity()
-	assert_eq(player.velocity, Vector2(0, 0))
-	assert_eq(player.get_input_direction(), Vector2(0, 0))
+	assert_eq(player.velocity, Vector2.ZERO)
+	assert_eq(player.get_input_direction(), Vector2.ZERO)
 
 func test_player_input():
 	var player: Player = autofree(Player.new())
@@ -34,7 +34,7 @@ func test_player_moving():
 	assert_eq(player.velocity, Vector2(1, 0))
 	Input.action_release("UI_right")
 	player.calculate_velocity()
-	assert_eq(player.velocity, Vector2(0, 0))
+	assert_eq(player.velocity, Vector2.ZERO)
 	
 func test_player_double_button_press():
 	var player: Player = autofree(Player.new())
@@ -42,13 +42,13 @@ func test_player_double_button_press():
 	Input.action_press("UI_right")
 	Input.action_press("UI_left")
 	player.calculate_velocity()
-	assert_eq(player.velocity, Vector2(0, 0))
+	assert_eq(player.velocity, Vector2.ZERO)
 	Input.action_release("UI_right")
 	player.calculate_velocity()
 	assert_eq(player.velocity, Vector2(-1, 0))
 	Input.action_release("UI_left")
 	player.calculate_velocity()
-	assert_eq(player.velocity, Vector2(0, 0))
+	assert_eq(player.velocity, Vector2.ZERO)
 	
 
 func test_player_button_held():
@@ -61,7 +61,7 @@ func test_player_button_held():
 	assert_eq(player.velocity, Vector2(1, 0))
 	Input.action_release("UI_right")
 	player.calculate_velocity()
-	assert_eq(player.velocity, Vector2(0, 0))
+	assert_eq(player.velocity, Vector2.ZERO)
 
 func test_player_acceleration():
 	var player: Player = autofree(Player.new())
