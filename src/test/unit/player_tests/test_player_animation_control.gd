@@ -24,7 +24,7 @@ func test_update_direction():
 	animation_controller.update_direction()
 	assert_eq(animation_controller.get_character_direction(),directions.RIGHT)
 	#staing idle
-	player.velocity= Vector2(0,0)
+	player.velocity= Vector2.ZERO
 	animation_controller.update_direction()
 	assert_eq(animation_controller.get_character_direction(),directions.RIGHT)
 
@@ -48,7 +48,7 @@ func test_stop_moving_changes_animation():
 	animation_controller.update_direction()
 	animation_controller.update_sprites()
 	assert_eq(animation_controller.sprite.animation,&"walk_right")
-	player.velocity= Vector2(0,0)
+	player.velocity= Vector2.ZERO
 	animation_controller.update_direction()
 	animation_controller.update_sprites()
 	assert_eq(animation_controller.sprite.animation,&"idle_right")
