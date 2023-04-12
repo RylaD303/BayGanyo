@@ -9,7 +9,7 @@ var _character_direction = directions.RIGHT
 @export var sprite: AnimatedSprite2D
 
 func get_character_direction()-> directions:
-	return _character_direction	
+	return _character_direction
 	
 func _player_is_moving()-> bool:
 	return self.player.velocity.x != 0 || self.player.velocity.y != 0
