@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://src/scripts/controllers/Hitbox.gd" id="3_i8hht"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgvh4"]
-radius = 26.0768
+radius = 26.0192
 
 [node name="enemy_bullet_variant_2" type="CharacterBody2D"]
 script = ExtResource("1_d8oi5")
