@@ -8,6 +8,9 @@ enum State{
 	ATTACKING
 }
 
+@export var health_controller: HealthController
+@export var hurtbox: Hurtbox
+
 @export var speed: float = 20
 @export var lower_bound_for_idle_time: float = 2
 @export var upper_bound_for_idle_time: float = 4
@@ -45,6 +48,14 @@ func _init():
 
 func _ready():
 	self._create_timer()
+
+func connect_hurtbox():
+	self.hurtbox.hitbox_entered.connect(_on_hitbox_entered)
+
+func _on_hitbox_entered(hitbox: Hitbox):
+	if hitbox == null:
+		return
+	health_controller.take_damage(hitbox.get_damage())
 
 func _create_timer() -> void:
 	self.state_timer = Timer.new()
