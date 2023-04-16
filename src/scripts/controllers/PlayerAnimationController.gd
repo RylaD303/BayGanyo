@@ -14,7 +14,7 @@ func get_character_direction()-> directions:
 func _player_is_moving()-> bool:
 	return self.player.velocity.x != 0 || self.player.velocity.y != 0
 
-func _process(delta):
+func _process(_delta):
 	update_direction()
 	update_sprites()
 
