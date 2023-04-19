@@ -9,13 +9,13 @@ class_name Player
 @export var acceleration: int = 10
 @export var friction: int = 15
 @export var dash_speed: int = 200
-@export var dash_duration: float = 1
-@export var dash_length_time: float = 0.5
+@export var dash_cooldown: float = 1
+@export var dash_duration: float = 0.5
 
 var can_dash = true
 var is_dashing = false
-var dash_length_timer: Timer
 var dash_duration_timer: Timer
+var dash_cooldown_timer: Timer
 
 func _init():
 	pass
@@ -25,12 +25,12 @@ func _ready():
 	self._setup_timers()
 
 func _setup_timers() -> void:
-	self.dash_length_timer = Timer.new()
-	self.add_child(self.dash_length_timer)
 	self.dash_duration_timer = Timer.new()
 	self.add_child(self.dash_duration_timer)
-	self.dash_length_timer.timeout.connect(stop_dash)
-	self.dash_duration_timer.timeout.connect(refresh_ability_to_dash)
+	self.dash_cooldown_timer = Timer.new()
+	self.add_child(self.dash_cooldown_timer)
+	self.dash_duration_timer.timeout.connect(stop_dash)
+	self.dash_cooldown_timer.timeout.connect(refresh_ability_to_dash)
 
 func setup_hurtbox_connections() -> void:
 	self.hurtbox.hitbox_entered.connect(_on_hitbox_entered)
@@ -42,9 +42,9 @@ func get_input_direction() -> Vector2:
 
 func _start_dash_timers() -> void:
 	#checks if the timers were setup already
-	if self.dash_duration_timer && self.dash_length_timer:
-		self.dash_length_timer.start(dash_length_time)
+	if self.dash_cooldown_timer && self.dash_duration_timer:
 		self.dash_duration_timer.start(dash_duration)
+		self.dash_cooldown_timer.start(dash_cooldown)
 
 func dash() -> void:
 	if can_dash and get_input_direction() != Vector2.ZERO:

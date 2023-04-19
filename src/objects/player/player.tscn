@@ -11,7 +11,6 @@ health_controller = NodePath("HealthController")
 acceleration = 15
 friction = 19
 dash_speed = 300
-dash_length_time = 0.4
 
 [node name="HealthController" type="Node" parent="."]
 script = ExtResource("2_dlq5y")

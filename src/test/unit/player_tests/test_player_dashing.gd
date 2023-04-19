@@ -9,8 +9,8 @@ func after_each():
 	Input.action_release("UI_left")
 
 func setup_player_dash_time(player: Player):
-	player.dash_duration = 0.2
-	player.dash_length_time = 0.1
+	player.dash_cooldown = 0.2
+	player.dash_duration = 0.1
 
 func test_default_state_dashing():
 	var player: Player = autoqfree(Player.new())
@@ -58,10 +58,10 @@ func test_player_dashability_changes_on_timer_timeout():
 	player.dash()
 	assert_true(player.is_dashing)
 	assert_false(player.can_dash)
-	await player.dash_length_timer.timeout
+	await player.dash_duration_timer.timeout
 	assert_false(player.is_dashing)
 	assert_false(player.can_dash)
-	await player.dash_duration_timer.timeout
+	await player.dash_cooldown_timer.timeout
 	assert_false(player.is_dashing)
 	assert_true(player.can_dash)
 
@@ -71,8 +71,8 @@ func test_player_can_dash_again():
 	setup_player_dash_time(player)
 	Input.action_press("UI_right")
 	player.dash()
-	await player.dash_length_timer.timeout
 	await player.dash_duration_timer.timeout
+	await player.dash_cooldown_timer.timeout
 	assert_false(player.is_dashing)
 	assert_true(player.can_dash)
 	player.dash()
