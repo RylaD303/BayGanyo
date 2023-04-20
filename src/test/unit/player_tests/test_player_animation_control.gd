@@ -3,6 +3,10 @@ extends GutTest
 enum directions {RIGHT, LEFT} 
 var sprites: AnimatedSprite2D = preload("res://src/test/test_objects/animated_sprite_test.tscn").instantiate()
 
+func after_all():
+	sprites.free()
+	assert_no_new_orphans('There is some memory allocated still.')
+
 func test_AnimationControl_initial_direction():
 	var player_animation_controller: PlayerAnimationController = autofree(PlayerAnimationController.new())
 	assert_eq(player_animation_controller.get_character_direction(), PlayerAnimationController.DEFAULT_DIRECTION)
@@ -59,5 +63,3 @@ func test_change_sprite_direction():
 	animation_controller.update_direction()
 	animation_controller.update_sprites()
 	assert_eq(animation_controller.sprite.animation,&"walk_right")
-	
-	

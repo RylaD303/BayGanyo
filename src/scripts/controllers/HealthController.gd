@@ -10,28 +10,24 @@ var current_health: int = self.max_health
 func is_health_depleted() -> bool:
 	return self.current_health <= 0
 
-func take_damage(amount: int) -> void:
-	if amount < 0:
-		return
+func apply_damage(amount: int) -> void:
+	amount = clamp(amount, 0, abs(amount))
 	self.current_health -= amount
 	if self.is_health_depleted():
 		self.current_health=0
 		health_depleted.emit()
 
 func heal(amount: int) -> void:
-	if amount < 0:
-		return
+	amount = clamp(amount, 0, abs(amount))
 	self.current_health += amount
 	if self.current_health > self.max_health:
 		self.current_health = self.max_health
 
 func set_current_health(amount: int) -> void:
-	if amount < 0:
-		return
+	amount = clamp(amount, 0, abs(amount))
 	self.current_health = min(amount, self.max_health)
 
 func set_max_health(amount: int) -> void:
-	if amount < 0:
-		return
+	amount = clamp(amount, 0, abs(amount))
 	self.max_health = amount
 	self.current_health = min(current_health, max_health)
