@@ -58,10 +58,10 @@ func test_player_dashability_changes_on_timer_timeout():
 	player.dash()
 	assert_true(player.is_dashing)
 	assert_false(player.can_dash)
-	await player.dash_duration_timer.timeout
+	player.dash_duration_timer.timeout.emit()
 	assert_false(player.is_dashing)
 	assert_false(player.can_dash)
-	await player.dash_cooldown_timer.timeout
+	player.dash_cooldown_timer.timeout.emit()
 	assert_false(player.is_dashing)
 	assert_true(player.can_dash)
 
@@ -71,8 +71,8 @@ func test_player_can_dash_again():
 	setup_player_dash_time(player)
 	Input.action_press("UI_right")
 	player.dash()
-	await player.dash_duration_timer.timeout
-	await player.dash_cooldown_timer.timeout
+	player.dash_duration_timer.timeout.emit()
+	player.dash_cooldown_timer.timeout.emit()
 	assert_false(player.is_dashing)
 	assert_true(player.can_dash)
 	player.dash()
