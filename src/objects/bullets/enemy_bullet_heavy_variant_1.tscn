@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyo4mta7yxgbj"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://src/scripts/objects/bullet.gd" id="1_3m34r"]
+[ext_resource type="Script" path="res://src/scripts/objects/Bullet.gd" id="1_3m34r"]
 [ext_resource type="Texture2D" uid="uid://df4ykmhca6jq2" path="res://assets/sprites/bullets/enemy_strong_bullet_variant1.png" id="2_iohy1"]
 [ext_resource type="Script" path="res://src/scripts/controllers/Hitbox.gd" id="3_1xj45"]
 
