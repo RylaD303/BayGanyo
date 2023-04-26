@@ -4,7 +4,7 @@ class_name Hitbox
 
 var damage: int = 0
 
-signal hit_hurtbox
+signal entered_hurtbox
 
 func get_damage() -> int:
 	return self.damage

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends PhysicsBody2D
 
 class_name Bullet
 
@@ -14,3 +14,9 @@ func set_direction_to_position(position: Vector2):
 	# setting the movement vector to be pointiong to the given position
 	self.velocity = position - self.global_position
 	self.velocity = self.velocity.normalized()*speed
+
+func setup_hitbox():
+	self.hitbox.entered_hurtbox.connect(_on_hit)
+	
+func _on_hit(hurt_box):
+	queue_free()

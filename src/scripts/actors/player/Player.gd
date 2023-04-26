@@ -86,6 +86,7 @@ func _on_hitbox_entered(hitbox: Hitbox) -> void:
 	if self.is_dashing:
 		return
 	self.health_controller.apply_damage(hitbox.get_damage())
+	hitbox.entered_hurtbox.emit()
 
 func stop_dash() -> void:
 	self.is_dashing = false

@@ -12,7 +12,7 @@ func fire() -> void:
 	var bullet = bullet_object
 	bullet_object.set_starting_positon(self.position)
 	bullet_object.set_direction_to_position(position_to_fire_to)
-	$BulletHandler.add_bullet(bullet_object)
+	self.get_parent().add_bullet(bullet_object)
 
 func _process(delta):
 	pass
