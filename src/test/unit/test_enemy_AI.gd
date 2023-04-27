@@ -34,14 +34,14 @@ func test_changing_states_with_timer():
 	var enemy_AI: EnemyAI = autoqfree(EnemyAI.new())
 	add_child(enemy_AI)
 	
-	enemy_AI.state_timer.timeout.emit()
+	enemy_AI.state_timer.emit_signal("timeout")
 	assert_eq(enemy_AI.state, enemy_AI.State.WANDERING)
 	assert_ne(enemy_AI.velocity, Vector2.ZERO)
 	
-	enemy_AI.state_timer.timeout.emit()
+	enemy_AI.state_timer.emit_signal("timeout")
 	assert_eq(enemy_AI.state, enemy_AI.State.ATTACKING)
 	assert_eq(enemy_AI.velocity, Vector2.ZERO)
 	
-	enemy_AI.state_timer.timeout.emit()
+	enemy_AI.state_timer.emit_signal("timeout")
 	assert_eq(enemy_AI.state, enemy_AI.State.IDLE)
 	assert_eq(enemy_AI.velocity, Vector2.ZERO)

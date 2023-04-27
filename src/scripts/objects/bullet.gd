@@ -1,4 +1,4 @@
-extends PhysicsBody2D
+extends CharacterBody2D
 
 class_name Bullet
 
@@ -16,7 +16,7 @@ func set_direction_to_position(position: Vector2):
 	self.velocity = self.velocity.normalized()*speed
 
 func setup_hitbox():
-	self.hitbox.entered_hurtbox.connect(_on_hit)
+	self.hitbox.entered_hurtbox.connect(_on_hit_enemy)
 	
-func _on_hit(hurt_box):
-	queue_free()
+func _on_hit_enemy(_hurtbox: Hurtbox):
+	self.queue_free()
