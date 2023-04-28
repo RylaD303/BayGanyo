@@ -9,11 +9,14 @@ func init() -> void:
 	shot_bullets = true
 
 func create_bullets() -> void:
-	var position_to_fire_to = $Player.position
+	
+	var position_to_fire_to: Vector2 = Vector2.ZERO
+	if $Player:
+		position_to_fire_to = $Player.position
 	var bullet = bullet_object
-	bullet_object.set_starting_positon(self.position)
+	bullet_object.set_starting_position(self.position)
 	bullet_object.set_direction_to_position(position_to_fire_to)
-	self.get_parent().add_bullet(bullet_object)
+	self.get_parent().add_child(bullet_object)
 
 func _set_state_attacking() -> void:
 	self.state = State.ATTACKING

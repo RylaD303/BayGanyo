@@ -19,6 +19,8 @@ script = ExtResource("2_dlq5y")
 script = ExtResource("3_l8i7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+light_mask = 2
+visibility_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("4_pscek")
