@@ -14,20 +14,20 @@ func set_player_default(player: Player) -> void:
 	player.friction = 1
 
 func test_player_not_moving():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	set_player_default(player)
 	player.calculate_velocity()
 	assert_eq(player.velocity, Vector2.ZERO)
 	assert_eq(player.get_input_direction(), Vector2.ZERO)
 
 func test_player_input():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	set_player_default(player)
 	Input.action_press("UI_right")
 	assert_eq(player.get_input_direction(), Vector2(1, 0))
 
 func test_player_moving():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	set_player_default(player)
 	Input.action_press("UI_right")
 	player.calculate_velocity()
@@ -37,7 +37,7 @@ func test_player_moving():
 	assert_eq(player.velocity, Vector2.ZERO)
 	
 func test_player_double_button_press():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	set_player_default(player)
 	Input.action_press("UI_right")
 	Input.action_press("UI_left")
@@ -52,7 +52,7 @@ func test_player_double_button_press():
 	
 
 func test_player_button_held():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	set_player_default(player)
 	Input.action_press("UI_right")
 	player.calculate_velocity()
@@ -64,7 +64,7 @@ func test_player_button_held():
 	assert_eq(player.velocity, Vector2.ZERO)
 
 func test_player_acceleration():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	player.speed = 10
 	player.acceleration = 5
 	Input.action_press("UI_right")
@@ -72,11 +72,9 @@ func test_player_acceleration():
 	assert_true(player.velocity.x > 0 && player.velocity.x < 10)
 	player.calculate_velocity()
 	assert_true(player.velocity.x == 10)
-	
-	
 
 func test_player_friction():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	player.friction = 5
 	player.velocity = Vector2(10, 0)
 	player.calculate_velocity()
