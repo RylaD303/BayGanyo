@@ -56,6 +56,7 @@ func _on_hitbox_entered(hitbox: Hitbox):
 	if hitbox == null:
 		return
 	health_controller.take_damage(hitbox.get_damage())
+	hitbox.entered_hurtbox.emit()
 
 func _create_timer() -> void:
 	self.state_timer = Timer.new()
