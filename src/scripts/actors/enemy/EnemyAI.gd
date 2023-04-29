@@ -25,11 +25,10 @@ var time_in_wandering_state: float
 var state_timer: Timer
 
 func get_player_position() -> Vector2:
-	var player_position: Vector2 = Vector2.ZERO
-	var player = self.get_parent().get_node("res://src/scripts/actors/player/Player.gd")
+	var player = self.get_tree().get_root().get_node("res://src/scripts/actors/player/Player.gd")
 	if player:
-		player_position = player.position
-	return player_position
+		return player.position
+	return Vector2.ZERO
 
 func _set_state_attacking() -> void:
 	self.state = State.ATTACKING

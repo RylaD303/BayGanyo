@@ -45,3 +45,12 @@ func test_changing_states_with_timer():
 	enemy_AI.state_timer.timeout.emit()
 	assert_eq(enemy_AI.state, enemy_AI.State.IDLE)
 	assert_eq(enemy_AI.velocity, Vector2.ZERO)
+
+func test_enemy_AI_gets_position_of_player():
+	var enemy_AI: EnemyAI = autofree(EnemyAI.new())
+	add_child_autofree(enemy_AI)
+	assert_eq(enemy_AI.get_player_position(), Vector2.ZERO)
+	var player: Player = preload("res://src/objects/player/player.tscn").instantiate()
+	player.position = Vector2(10, 2)
+	add_child_autofree(player)
+	assert_eq(enemy_AI.get_player_position(), Vector2(10, 2))
