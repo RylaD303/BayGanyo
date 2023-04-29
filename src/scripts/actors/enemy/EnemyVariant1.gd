@@ -2,7 +2,7 @@ extends EnemyAI
 
 class_name EnemyVariantOne
 
-var bullet_object = preload("res://src/objects/bullets/enemy_bullet_heavy_variant_1.tscn").instantiate()
+var bullet_object = preload("res://src/objects/bullets/enemy_bullet_heavy_variant_1.tscn")
 var shot_bullets: bool
 func init() -> void:
 	super._init()
@@ -11,12 +11,13 @@ func init() -> void:
 func create_bullets() -> void:
 	
 	var position_to_fire_to: Vector2 = Vector2.ZERO
-	if $Player:
-		position_to_fire_to = $Player.position
-	var bullet = bullet_object
-	bullet_object.set_starting_position(self.position)
-	bullet_object.set_direction_to_position(position_to_fire_to)
-	self.get_parent().add_child(bullet_object)
+	var player = self.get_tree().get_node("res://src/scripts/actors/player/Player.gd")
+	if player:
+		position_to_fire_to = player.position
+	var bullet = bullet_object.instantiate()
+	bullet.set_starting_position(self.position)
+	bullet.set_direction_to_position(position_to_fire_to)
+	self.get_tree().get_root().add_child(bullet)
 
 func _set_state_attacking() -> void:
 	self.state = State.ATTACKING
