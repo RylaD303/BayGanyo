@@ -17,11 +17,11 @@ var is_dashing = false
 var dash_duration_timer: Timer
 var dash_cooldown_timer: Timer
 
-func _init():
+func _init() -> void:
 	pass
 
 
-func _ready():
+func _ready() -> void:
 	self._setup_timers()
 
 func _setup_timers() -> void:
