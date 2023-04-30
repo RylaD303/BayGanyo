@@ -23,16 +23,19 @@ var state: State
 var time_in_idle_state: float 
 var time_in_wandering_state: float
 var state_timer: Timer
+var player: Player
 
 func get_player_position() -> Vector2:
-	var player = self.get_tree().get_root().get_node("res://src/scripts/actors/player/Player.gd")
-	if player:
-		return player.position
+	if self.player:
+		return self.player.position
 	return Vector2.ZERO
 
 func _set_state_attacking() -> void:
 	self.state = State.ATTACKING
 	self.velocity = Vector2.ZERO
+
+func get_player():
+	self.player = $Player
 
 func _set_state_idle() -> void:
 	self.state = State.IDLE
