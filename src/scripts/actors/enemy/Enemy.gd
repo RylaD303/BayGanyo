@@ -4,6 +4,7 @@ class_name Enemy
 
 @export var health_controller : HealthController
 @export var hurtbox : Hurtbox
+@export var AI : EnemyAI
 
 func setup_hurtbox_connections():
 	self.hurtbox.hitbox_entered.connect(self._on_hitbox_entered)
