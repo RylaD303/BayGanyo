@@ -8,14 +8,12 @@ enum State{
 	ATTACKING
 }
 
-@export var health_controller : HealthController
-@export var hurtbox : Hurtbox
-@export var speed: float = 20
 @export var lower_bound_for_idle_time: float = 2
 @export var upper_bound_for_idle_time: float = 4
 @export var lower_bound_for_wandering_time: float = 2
 @export var upper_bound_for_wandering_time: float = 4
 @export var time_in_attack_state: float = 1
+@export var speed: float = 20
 
 var random_number_generator: RandomNumberGenerator
 var state: State
@@ -65,11 +63,6 @@ func _on_timer_timeout() -> void:
 		self._set_state_attacking()
 		self.state_timer.start(self.time_in_attack_state)
 	
-func setup_hurtbox_connections():
-	self.hurtbox.hitbox_entered.connect(self._on_hitbox_entered)
-
-func _on_hitbox_entered(hitbox: Hitbox):
-	self.health_controller.take_damage(hitbox.get_damage())
 
 func _physics_process(_delta):
 	self.move_and_slide()
