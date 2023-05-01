@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpau3j3vffgqq"]
+
+[ext_resource type="Script" path="res://src/objects/mainMenu/options_menu.gd" id="1_6fwa8"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchor_right = 0.886
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 38.0
+offset_right = 157.328
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6fwa8")
+
+[node name="OptionsMenuMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -150.0
+offset_right = 211.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsMenuVBoxContainer" type="VBoxContainer" parent="OptionsMenuMarginContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_direction = 2
+layout_mode = 2
+
+[node name="ButtonBack" type="Button" parent="OptionsMenuMarginContainer/OptionsMenuVBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 14
+text = "Back"
+
+[connection signal="pressed" from="OptionsMenuMarginContainer/OptionsMenuVBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
