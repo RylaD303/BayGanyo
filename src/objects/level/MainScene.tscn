@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://63cky5sie8um"]
+
+[ext_resource type="Script" path="res://src/scripts/level/MainScene.gd" id="1_g8skf"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_g8skf")
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
