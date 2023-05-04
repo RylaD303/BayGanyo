@@ -34,8 +34,8 @@ func _set_state_attacking() -> void:
 	self.state = State.ATTACKING
 	self.velocity = Vector2.ZERO
 
-func get_player():
-	self.player = $Player
+func set_player_reference(player: Player):
+	self.player = player
 
 func _set_state_idle() -> void:
 	self.state = State.IDLE

@@ -48,9 +48,10 @@ func test_changing_states_with_timer():
 
 func test_enemy_AI_gets_position_of_player():
 	var enemy_AI: EnemyAI = autofree(EnemyAI.new())
-	add_child_autofree(enemy_AI)
 	assert_eq(enemy_AI.get_player_position(), Vector2.ZERO)
-	var player: Player = preload("res://src/objects/player/player.tscn").instantiate()
+	var player: Player = autofree(preload("res://src/objects/player/player.tscn").instantiate())
 	player.position = Vector2(10, 2)
-	add_child_autofree(player)
+	enemy_AI.set_player_reference(player)
 	assert_eq(enemy_AI.get_player_position(), Vector2(10, 2))
+	player.position = Vector2(5, 3)
+	assert_eq(enemy_AI.get_player_position(), Vector2(5, 3))
