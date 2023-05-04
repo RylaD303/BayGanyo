@@ -13,6 +13,7 @@ func shoot_bullet() -> void:
 	var position_to_fire_to = self.get_player_position()
 	var bullet = bullet_object.instantiate()
 	bullet.shoot_bullet(self.position, position_to_fire_to)
+	bullet.look_at(bullet.position + bullet.velocity)
 	self.get_tree().get_root().add_child(bullet)
 	self.able_to_attack = false
 
