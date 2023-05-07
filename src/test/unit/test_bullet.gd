@@ -19,9 +19,9 @@ func test_bullet_setting_movement():
 	assert_eq(bullet.velocity, Vector2(10, 0))
 	
 func test_bullet_deleting_on_hit():
-	var hurtbox: Hurtbox = autofree(Hurtbox.new())
-	var bullet: Bullet = autoqfree(Bullet.new())
-	bullet.hitbox = Hitbox.new()
+	var bullet: Bullet = autofree(Bullet.new())
+	var hurtbox: Hurtbox = null
+	bullet.hitbox = autofree(Hitbox.new())
+	bullet.setup_hitbox()
 	bullet.hitbox.emit_signal("entered_hurtbox", hurtbox)
-	assert_null(bullet)
-
+	assert_true(bullet.is_queued_for_deletion())

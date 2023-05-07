@@ -8,6 +8,9 @@ enum State{
 	ATTACKING
 }
 
+@export var health_controller: HealthController
+@export var hurtbox: Hurtbox
+
 @export var speed: float = 20
 @export var lower_bound_for_idle_time: float = 2
 @export var upper_bound_for_idle_time: float = 4
@@ -20,10 +23,19 @@ var state: State
 var time_in_idle_state: float 
 var time_in_wandering_state: float
 var state_timer: Timer
+var player: Player
+
+func get_player_position() -> Vector2:
+	if self.player:
+		return self.player.position
+	return Vector2.ZERO
 
 func _set_state_attacking() -> void:
 	self.state = State.ATTACKING
 	self.velocity = Vector2.ZERO
+
+func set_player_reference(player_reference: Player):
+	self.player = player_reference
 
 func _set_state_idle() -> void:
 	self.state = State.IDLE
@@ -37,14 +49,23 @@ func _set_state_wandering() -> void:
 	var random_velocity: Vector2 = Vector2(random_x, random_y).normalized()
 	self.velocity = random_velocity*self.speed
 
-func _init():
+func _init() -> void:
 	self.random_number_generator = RandomNumberGenerator.new()
 	self.state = State.IDLE
 	self.time_in_idle_state = random_number_generator.randf_range(lower_bound_for_idle_time, upper_bound_for_idle_time)
 	self.time_in_wandering_state = random_number_generator.randf_range(lower_bound_for_wandering_time, upper_bound_for_wandering_time)
 
-func _ready():
+func _ready() -> void:
 	self._create_timer()
+
+func connect_hurtbox() -> void:
+	self.hurtbox.hitbox_entered.connect(_on_hitbox_entered)
+
+func _on_hitbox_entered(hitbox: Hitbox) -> void:
+	if hitbox == null:
+		return
+	health_controller.apply_damage(hitbox.get_damage())
+	hitbox.entered_hurtbox.emit()
 
 func _create_timer() -> void:
 	self.state_timer = Timer.new()
@@ -63,5 +84,7 @@ func _on_timer_timeout() -> void:
 		self._set_state_attacking()
 		self.state_timer.start(self.time_in_attack_state)
 
-func _physics_process(_delta):
+func _physics_process(_delta) -> void:
 	self.move_and_slide()
+
+

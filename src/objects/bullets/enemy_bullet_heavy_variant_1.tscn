@@ -1,24 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://3br01sj5br7n"]
+[gd_scene load_steps=5 format=3 uid="uid://coswfpdqv8wjt"]
 
-[ext_resource type="Script" path="res://src/scripts/objects/Bullet.gd" id="1_3m34r"]
-[ext_resource type="Texture2D" uid="uid://df4ykmhca6jq2" path="res://assets/sprites/bullets/enemy_strong_bullet_variant1.png" id="2_iohy1"]
-[ext_resource type="Script" path="res://src/scripts/controllers/Hitbox.gd" id="3_1xj45"]
+[ext_resource type="Script" path="res://src/scripts/objects/bullet.gd" id="1_cfk1a"]
+[ext_resource type="Texture2D" uid="uid://df4ykmhca6jq2" path="res://assets/sprites/bullets/enemy_strong_bullet_variant1.png" id="2_fj4wr"]
+[ext_resource type="Script" path="res://src/scripts/controllers/Hitbox.gd" id="3_pk27q"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhjsi"]
-radius = 20.0
-height = 66.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rpr7"]
+radius = 19.0
+height = 64.0
 
-[node name="enemy_bullet_heavy_variant_1" type="CharacterBody2D"]
-script = ExtResource("1_3m34r")
+[node name="enemy_bullet_heavy_varaint_1" type="CharacterBody2D"]
+script = ExtResource("1_cfk1a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, 0)
-scale = Vector2(1.01563, 1)
-texture = ExtResource("2_iohy1")
+texture = ExtResource("2_fj4wr")
 
 [node name="Hitbox" type="Area2D" parent="."]
-script = ExtResource("3_1xj45")
+script = ExtResource("3_pk27q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+light_mask = 4
+visibility_layer = 3
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_dhjsi")
+shape = SubResource("CapsuleShape2D_7rpr7")
