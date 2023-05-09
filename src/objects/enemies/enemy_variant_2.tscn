@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://jwlumkfmol34"]
+
+[ext_resource type="Script" path="res://src/scripts/actors/enemy/EnemyVariant2.gd" id="1_hbto2"]
+[ext_resource type="Texture2D" uid="uid://dw3gg0icccmj6" path="res://assets/icon.svg" id="2_gacyv"]
+
+[node name="enemy_variant_2" type="CharacterBody2D"]
+script = ExtResource("1_hbto2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gacyv")
