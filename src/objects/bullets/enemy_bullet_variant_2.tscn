@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=5 format=3 uid="uid://cg08300rddcuv"]
-=======
-[gd_scene load_steps=5 format=3 uid="uid://d2cp7h5dc3gaa"]
->>>>>>> 5eb93e68b67e181ebd280945a203b710e2644574
+[gd_scene load_steps=5 format=3 uid="uid://dpgncr1ihw04"]
 
 [ext_resource type="Script" path="res://src/scripts/objects/bullet.gd" id="1_nqy6m"]
 [ext_resource type="Texture2D" uid="uid://bfnpklrc3luv0" path="res://assets/sprites/bullets/enemy_bullet_variant_2.png" id="2_v4413"]
