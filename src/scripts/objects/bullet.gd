@@ -19,12 +19,16 @@ func set_direction_to_position(direction_position: Vector2) -> void:
 func redirect_bullet(starting_position: Vector2, position_to_fire_to: Vector2) -> void:
 	self.set_starting_position(starting_position)
 	self.set_direction_to_position(position_to_fire_to)
+	self.look_at(self.position + self.velocity)
 
 func move() -> void:
 	move_and_slide()
 
 func _physics_process(_delta) -> void:
 	move()
+
+func _process(_delta) -> void:
+	self.look_at(self.position + self.velocity)
 
 func setup_hitbox() -> void:
 	self.hitbox.entered_hurtbox.connect(_on_hit)

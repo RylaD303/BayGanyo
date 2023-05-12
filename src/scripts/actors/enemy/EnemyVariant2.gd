@@ -14,10 +14,6 @@ func _rotate_bullets(bullets: Array) -> void:
 	bullets[1].velocity = bullets[1].velocity.rotated(1) #angle in radians
 	bullets[2].velocity = bullets[2].velocity.rotated(-1)
 
-func _change_bullets_rotation(bullets: Array) -> void:
-	for bullet in bullets:
-		bullet.look_at(bullet.position + bullet.velocity)
-
 func _add_bullets_to_scene(bullets: Array) -> void:
 	for bullet in bullets:
 		self.get_tree().get_root().add_child(bullet)

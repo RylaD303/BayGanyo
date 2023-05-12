@@ -13,7 +13,6 @@ func redirect_bullet() -> void:
 	var position_to_fire_to = self.get_player_position()
 	var bullet: Bullet = bullet_object.instantiate()
 	bullet.redirect_bullet(self.position, position_to_fire_to)
-	bullet.look_at(bullet.position + bullet.velocity)
 	self.get_tree().get_root().add_child(bullet)
 	self.able_to_attack = false
 
