@@ -25,3 +25,9 @@ func test_bullet_deleting_on_hit():
 	bullet.setup_hitbox()
 	bullet.hitbox.emit_signal("entered_hurtbox", hurtbox)
 	assert_true(bullet.is_queued_for_deletion())
+
+func test_bullet_rotation():
+	var bullet: Bullet = autofree(Bullet.new())
+	bullet.global_position = Vector2.ZERO
+	bullet.redirect_bullet(Vector2(0, 0), Vector2(-50, 0))
+	assert_almost_eq(bullet.rotation, 3.14, 0.01)

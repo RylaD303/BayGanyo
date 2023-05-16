@@ -4,6 +4,7 @@ class_name Bullet
 
 @export var hitbox: Hitbox
 var speed = 100
+
 func set_damage(amount: int):
 	self.hitbox.set_damage(amount)
 	self.setup_hitbox()
