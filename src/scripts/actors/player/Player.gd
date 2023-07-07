@@ -17,11 +17,11 @@ var is_dashing = false
 var dash_duration_timer: Timer
 var dash_cooldown_timer: Timer
 
-func _init():
+func _init() -> void:
 	pass
 
 
-func _ready():
+func _ready() -> void:
 	self._setup_timers()
 
 func _setup_timers() -> void:
@@ -86,6 +86,7 @@ func _on_hitbox_entered(hitbox: Hitbox) -> void:
 	if self.is_dashing:
 		return
 	self.health_controller.apply_damage(hitbox.get_damage())
+	hitbox.entered_hurtbox.emit()
 
 func stop_dash() -> void:
 	self.is_dashing = false

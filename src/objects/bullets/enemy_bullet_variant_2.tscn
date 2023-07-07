@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpgncr1ihw04"]
+
+[ext_resource type="Script" path="res://src/scripts/objects/bullet.gd" id="1_nqy6m"]
+[ext_resource type="Texture2D" uid="uid://bfnpklrc3luv0" path="res://assets/sprites/bullets/enemy_bullet_variant_2.png" id="2_v4413"]
+[ext_resource type="Script" path="res://src/scripts/controllers/Hitbox.gd" id="3_i8hht"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6lwu0"]
+radius = 24.0208
+
+[node name="enemy_bullet_variant_2" type="CharacterBody2D"]
+script = ExtResource("1_nqy6m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v4413")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_i8hht")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+light_mask = 4
+visibility_layer = 3
+shape = SubResource("CircleShape2D_6lwu0")

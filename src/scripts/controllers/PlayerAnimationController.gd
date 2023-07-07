@@ -9,7 +9,7 @@ var _character_direction = directions.RIGHT
 @export var sprite: AnimatedSprite2D
 
 func get_character_direction()-> directions:
-	return _character_direction	
+	return _character_direction
 	
 func _player_is_moving()-> bool:
 	return self.player.velocity.x != 0 || self.player.velocity.y != 0
@@ -23,17 +23,23 @@ func update_direction()-> void:
 		_character_direction = directions.LEFT
 	elif(self.player.velocity.x > 0):
 		_character_direction = directions.RIGHT
-		
+
+func set_animation_walking() -> void:
+	if(_character_direction == directions.RIGHT):
+		self.sprite.play(&"walk_right")
+	else:
+		self.sprite.play(&"walk_left")
+
+func set_animation_idle() -> void:
+	if(_character_direction == directions.RIGHT):
+		self.sprite.play(&"idle_right")
+	else:
+		self.sprite.play(&"idle_left")
+
 func update_sprites()-> void:
 	if(_player_is_moving()):
-		if(_character_direction == directions.RIGHT):
-			self.sprite.play(&"walk_right")
-		else:
-			self.sprite.play(&"walk_left")
+		self.set_animation_walking()
 	else:
-		if(_character_direction == directions.RIGHT):
-			self.sprite.play(&"idle_right")
-		else:
-			self.sprite.play(&"idle_left")
+		self.set_animation_idle()
 
 

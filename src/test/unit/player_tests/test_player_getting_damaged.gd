@@ -8,7 +8,7 @@ func after_each():
 	Input.action_release("UI_right")
 
 func test_player_getting_damaged():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	player.hurtbox =  autofree(Hurtbox.new())
 	player.health_controller = autofree(HealthController.new())
 
@@ -26,7 +26,7 @@ func test_player_getting_damaged():
 	assert_signal_emitted(player.health_controller, "health_depleted")
 
 func test_player_cant_get_damaged_while_dashing():
-	var player: Player = autoqfree(Player.new())
+	var player: Player = autofree(Player.new())
 	player.hurtbox =  autofree(Hurtbox.new())
 	player.health_controller = autofree(HealthController.new())
 
