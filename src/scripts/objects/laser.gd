@@ -12,7 +12,7 @@ func _ready():
 	vfx_line.points[1] = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-	var cast_point := cast_to
+	var cast_point = 0
 	self.force_raycast_update()
 	if self.is_colliding():
 		cast_point =  to_local(self.get_collision_point())
